@@ -1,0 +1,1 @@
+/api/* "http://data.fixer.io/api/latest?access_key=a4ee05d8f640b121813e43834dea0c6f&format=1"
