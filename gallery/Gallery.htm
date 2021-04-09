@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="filter">
+        <ul>
+            <li data-filter="item">All</li>
+            <li data-filter="design">design</li>
+            <li data-filter="code">code</li>
+            <li data-filter="market">marketing</li>
+        </ul>
+    </div>
+    <div class="gallery">
+     
+       <div class="item-tall item market" data-img="./slide1.jpg">
+
+       </div>
+       <div class="item2 item design"  data-img="./slide2.jpg"></div>
+       <div class="item3 item  design"  data-img="./slide3.jpg"></div>
+       <div class="item4 item code"  data-img="./slide4.jpg"></div>
+       <div class="item5 item market"  data-img="./slide5.jpg"></div>
+         
+    </div>
+    <div class="over">
+        <div class="move">
+            <div class="prev" onclick="prevSlide()">&#x2190;</div>
+            <div class="next" onclick="nextSlide()"> &#x2192;</div>
+            
+        </div>
+        <img src="./slide2.jpg" alt="">
+        <div class="count"></div>
+        <div class="exit">X</div>
+        <div class="zoom"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
