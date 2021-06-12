@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            overflow:hidden
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            
+        }
+        .panels{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        .panel{
+            width: 25%;
+            height: 100vh;
+            background-position: center;
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #fff;
+            transition:width .7s cubic-bezier(0.61,-0.19, 0.7,-0.11),flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11), transform 5s;
+            cursor: pointer;
+        }
+      
+        
+       .panel span:nth-of-type(1){
+           transform: translateY(-650%);
+       }
+        .panel span:nth-of-type(2){
+           transform: translateY(650%);
+       }
+         .panel.active{
+           width: 80%;
+        }
+       .panel.active span{
+            transform: translateY(0%);
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="panels">
+        <div class="panel">
+            <span>Hey</span>
+            <h1>let's</h1>
+            <span>world</span>
+        </div>
+        <div class="panel">
+            <span>take</span>
+            <h1>do</h1>
+            <span>care</span>
+        </div>
+        <div class="panel">
+            <span>do</span>
+            <h1>things</h1>
+            <span>better</span>
+        </div>
+        <div class="panel">
+            <span>never</span>
+            <h1>useful</h1>
+            <span>fail</span>
+        </div>
+        <div class="panel">
+            <span>up</span>
+            <h1>forever</h1>
+            <span>top</span>
+        </div>
+    </div>
+
+
+    <script>
+       let imgs = ['https://images.unsplash.com/photo-1443891238287-325a8fddd0f7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1500&ixid=MnwxfDB8MXxhbGx8fHx8fHx8fHwxNjE4NTk0MDA4&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1500',
+                  'https://images.unsplash.com/24/flashlight.jpg?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1500&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1500',
+                  'https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d',
+                  'https://images.unsplash.com/photo-1442522772768-9032b6d10e3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1500&ixid=MnwxfDB8MXxhbGx8fHx8fHx8fHwxNjIyMTQ5OTE4&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1500',
+                   'https://images.unsplash.com/photo-1465156799763-2c087c332922?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1500&ixid=MnwxfDB8MXxhbGx8fHx8fHx8fHwxNjIwMjk1NTIx&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1500'
+    ]
+       let panels = document.querySelectorAll('.panel')
+       for (let i = 0; i < imgs.length; i++) {
+           panels[i].style.backgroundImage = `url(${imgs[i]})`
+       }
+      panels.forEach( i =>  i.addEventListener('click', (e)=>{
+            
+          if(i.classList.contains('active')){
+          return   i.classList.remove('active')
+        }
+        else{
+            return  i.classList.add('active')
+        }
+      }))
+    </script>
+</body>
+</html>

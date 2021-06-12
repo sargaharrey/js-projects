@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="over"></div>
+    <audio src='./sounds/boom.wav' type='audio/wav'  data-code='97'></audio>
+    <audio src='./sounds/clap.wav' type='audio/wav' data-code='115'></audio>
+    <audio src='./sounds/hihat.wav' type='audio/wav' data-code='100'></audio>
+    <audio src='./sounds/kick.wav' type='audio/wav' data-code='102'></audio>
+    <audio src='./sounds/openhat.wav' type='audio/wav' data-code='103'></audio>
+    <audio src='./sounds/ride.wav' type='audio/wav' data-code='104'></audio>
+    <audio src='./sounds/snare.wav' type='audio/wav' data-code="105"></audio>
+    <audio src='./sounds/tink.wav' type='audio/wav' data-code="106"></audio>
+    <audio src='./sounds/tom.wav' type='audio/wav' data-code="107"></audio>
+
+    <div class="options">
+        <a data-code='97'>a</a>
+        <a data-code='115'> s</a>
+        <a data-code='100'>d</a>
+        <a data-code='102'>f</a>
+        <a data-code='103'>g</a>
+        <a data-code='104'>h</a>
+        <a data-code='106'>j</a>
+        <a data-code='107'>k</a>
+    </div>
+ 
+ <script>
+  
+ 
+  let soun =  document.querySelectorAll('audio')
+  let btn = document.querySelectorAll('.options a')
+ 
+  document.onReady = addEventListener('keypress', function(e) {
+      let targetI = Array.from(soun).filter(i => e.keyCode === parseInt(i.dataset.code))[0]  
+      targetI.play()
+      targetI.currentTime = 0
+       Array.from(btn).filter(i => e.keyCode === parseInt(i.dataset.code))[0].classList.add('active');
+ 
+               
+    })
+    addEventListener('transitionend',function(e){
+        btn.forEach((i) => {
+             i.classList.remove('active');
+        })
+    })
+
+
+</script>
+
+</body>
+</html>

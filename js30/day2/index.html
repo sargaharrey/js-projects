@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+        
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            background-color: black;  
+        }
+        .clock{
+            width: 300px;
+            height:300px;
+            background: #fff;
+            border-radius: 50%;
+            position: relative;
+            padding:10px
+        }
+        .clock .nums span{
+           display:block;
+           transform: translate(-50%, -50%);
+           width: 2px;
+           height: 2px;
+           background:#000;
+           /* transform-origin:  center;  */
+            position: absolute;
+            left: calc(50% - 1px);
+        
+            z-index: 2;
+            height: 300px;
+            
+            opacity: 1;
+        }
+        .clock .hider1{
+           position: absolute;
+           top: 15px;
+         
+           left: 15px;
+          
+           width: 290px;
+           height: 290px;
+           background-color:white;
+           border-radius: 50%;
+           z-index: 3; 
+        }
+        .clock .clock-wise{
+             position: absolute;
+           top: 25px;
+         
+           left: 25px;
+          
+           width: 270px;
+           height: 270px;
+           background-color:white;
+           border-radius: 50%;
+           z-index: 5; 
+        }
+        .clock .clock-wise span{
+            position: absolute;
+            top: 48%;
+            left: 48%;
+            width: 5px;
+            height: 100px;
+            background-color: #000;
+            transform-origin:top  center;
+            z-index: 10;
+            transform:rotateX(180deg);
+            transition:all .3s ease;
+
+        }
+        .clock .core{
+            background-color: #000;
+            width:25px;
+            height:25px;
+            border-radius: 50%;
+            position: absolute;
+            top: 45%;
+            left: 45%;
+            z-index: 100;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="nums">
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       <span></span>
+       </div>
+       <div class="hider1">
+         
+       </div>
+       <div class="clock-wise">
+            <span class="hour" style="background-color:blue ;height:80px"></span>
+            <span class="minute" style="background-color:green ;"></span>
+            <span class="secound" style="background-color:yellow ;height: 120px;"></span>
+       </div>
+      <div class="core"></div>
+    </div>
+
+<script>
+    let clock = document.querySelector('.clock');
+    let numItems = document.querySelectorAll('.clock span')
+    let hour = document.querySelector('.hour')
+    let minute = document.querySelector('.minute')
+    let secound = document.querySelector('.secound')
+
+    function positionItems(){
+     
+      for(let i = 0; i < 60;i++){
+      numItems[i].style.transform = `rotateZ(${i * 6}deg)`
+      if(i % 5 === 0 ){
+       numItems[i].style.zIndex = '4'
+       numItems[i].style.height = `300px`
+    }
+}
+}
+    function move(){
+       let now = new Date()
+       let s  = now.getSeconds() * 6 + 180
+       let m = now.getMinutes() * 6 + 180
+       let h  = now.getHours() * 30 + 180  + now.getMinutes() / 3
+        if(s === 60){
+            s= 0
+        }
+        if(m === 60){
+            m = 0
+        }
+       
+       secound.style.transform = `rotate(${ s}deg)`
+       minute.style.transform = `rotate(${m}deg)`
+        hour.style.transform = `rotate(${h}deg)`
+        setInterval(() => {
+           secound.style.transform = `rotate(${s = s + 6}deg)`
+        },1000 );
+        setInterval(()=>{
+            minute.style.transform = `rotate(${m = m + 6}deg)`
+        },60000)
+        setInterval(() => {
+            minute.style.transform = `rotate(${h = h + 6}deg)`
+        }, 1200000)
+
+    }
+    positionItems()
+     move()
+
+</script>
+</body>
+</html>
