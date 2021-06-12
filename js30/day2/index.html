@@ -193,7 +193,7 @@
        let now = new Date()
        let s  = now.getSeconds() * 6 +2
        let m = now.getMinutes() * 6 
-       let h  = now.getHours()  + 360 -50
+       let h  = now.getHours() * 15 - now.getMinutes() -6
        secound.style.transform = `rotate(${s}deg)`
        minute.style.transform = `rotate(${m}deg)`
         hour.style.transform = `rotate(${h}deg)`
