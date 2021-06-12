@@ -76,7 +76,7 @@
             transform-origin:top  center;
             z-index: 10;
             transform:rotateX(180deg);
-            transition:all .3s ease;
+             transition:all .3s ease; 
 
         }
         .clock .core{
@@ -189,9 +189,7 @@
        let s  = now.getSeconds() * 6 + 180
        let m = now.getMinutes() * 6 + 180
        let h  = now.getHours() * 30 + 180  + now.getMinutes() / 3
-        if(s === 60){
-            s= 0
-        }
+        
         if(m === 60){
             m = 0
         }
@@ -199,8 +197,18 @@
        secound.style.transform = `rotate(${ s}deg)`
        minute.style.transform = `rotate(${m}deg)`
         hour.style.transform = `rotate(${h}deg)`
+        let sr =  () => {
+        if(s >= 360){
+            s = 0
+            numItems.style.transition = none
+        }
+        else{
+       return  s =  s + 6
+        }
+    }
+        
         setInterval(() => {
-           secound.style.transform = `rotate(${s = s + 6}deg)`
+          secound.style.transform = `rotate(${sr()}deg)`
         },1000 );
         setInterval(()=>{
             minute.style.transform = `rotate(${m = m + 6}deg)`
