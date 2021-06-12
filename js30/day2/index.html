@@ -33,7 +33,7 @@
            width: 2px;
            height: 2px;
            background:#000;
-           /* transform-origin:  center;  */
+           
             position: absolute;
             left: calc(50% - 1px);
         
@@ -59,7 +59,7 @@
            top: 25px;
          
            left: 25px;
-          
+           transform:rotate(180deg);
            width: 270px;
            height: 270px;
            background-color:white;
@@ -75,10 +75,13 @@
             background-color: #000;
             transform-origin:top  center;
             z-index: 10;
-            transform:rotateX(180deg);
-             transition:all .3s ease; 
-
+            /*  */
+             transition: all 0s ease;
+                
         }
+        /* .clock .clock-wise span.tran{
+              transition-duration: 0s;                    
+        } */
         .clock .core{
             background-color: #000;
             width:25px;
@@ -185,41 +188,69 @@
 }
 }
     function move(){
+
+        // current Time
        let now = new Date()
-       let s  = now.getSeconds() * 6 + 180
-       let m = now.getMinutes() * 6 + 180
-       let h  = now.getHours() * 30 + 180  + now.getMinutes() / 3
-        
-        if(m === 60){
-            m = 0
-        }
-       
-       secound.style.transform = `rotate(${ s}deg)`
+       let s  = now.getSeconds() * 6 +2
+       let m = now.getMinutes() * 6 
+       let h  = now.getHours()  + 360 -50
+       secound.style.transform = `rotate(${s}deg)`
        minute.style.transform = `rotate(${m}deg)`
         hour.style.transform = `rotate(${h}deg)`
+
+
+        // Rotation limit
         let sr =  () => {
         if(s >= 360){
-            s = 0
-            numItems.style.transition = none
+             
+           return s = 6
+           
         }
         else{
-       return  s =  s + 6
+         
+         
+      return  s =  s + 6
         }
-    }
-        
+        }
+        let  mr = () => {
+            if (m >= 360) {
+
+                return m = 6
+
+            }
+            else {
+
+
+                return m = m + 6
+            }
+        }
+        let hr = () => {
+            if (h >= 360) {
+
+                return h = 6
+
+            }
+            else {
+
+
+                return h = h + 6
+            }
+        }
+
+        // Move timer
         setInterval(() => {
           secound.style.transform = `rotate(${sr()}deg)`
         },1000 );
         setInterval(()=>{
-            minute.style.transform = `rotate(${m = m + 6}deg)`
+            minute.style.transform = `rotate(${mr()}deg)`
         },60000)
         setInterval(() => {
-            minute.style.transform = `rotate(${h = h + 6}deg)`
+            hour.style.transform = `rotate(${hr()}deg)`
         }, 1200000)
 
     }
     positionItems()
-     move()
+    move()
 
 </script>
 </body>
